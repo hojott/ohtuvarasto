@@ -65,16 +65,17 @@ class TestVarasto(unittest.TestCase):
 
     def test_laittaminen_liikaa_tilaa(self):
         self.varasto.lisaa_varastoon(11)
-        
-        #varastossa pitäisi olla tilaa 10 - 11 = -1 -> 0
+
+        # varastossa pitäisi olla tilaa 10 - 11 = -1 -> 0
         self.assertAlmostEqual(self.varasto.paljonko_mahtuu(), 0)
 
     def test_laittaminen_negatiivista_tilaa(self):
         self.varasto.ota_varastosta(10)
         self.varasto.lisaa_varastoon(-1)
 
-        #varastossa pitäisi olla tilaa 0 + 10 - 0 = 10
+        # varastossa pitäisi olla tilaa 0 + 10 - 0 = 10
         self.assertAlmostEqual(self.varasto.paljonko_mahtuu(), 10)
 
     def test___str__(self):
-        self.assertEqual(str(self.varasto), f"saldo = {self.varasto.saldo}, vielä tilaa {self.varasto.paljonko_mahtuu()}")
+        self.assertEqual(str(
+            self.varasto), f"saldo = {self.varasto.saldo}, vielä tilaa {self.varasto.paljonko_mahtuu()}")
